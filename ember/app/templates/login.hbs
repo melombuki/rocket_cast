@@ -1,0 +1,19 @@
+<form {{action "login" on="submit"}}>
+  <div>
+    <label>
+      Email: 
+      {{input value=email}}
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Password: 
+      {{input value=password type="password"}}
+    </label>
+  </div>
+
+  <button type="submit" class="btn">Log in</button>
+</form>
+
+{{outlet}}

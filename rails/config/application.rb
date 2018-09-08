@@ -25,8 +25,5 @@ module RocketCast
     config.autoload_paths << Rails.root.join('lib')
 
     config.api_only = true
-
-    config.logger = Logger.new(STDOUT)
-
   end
 end

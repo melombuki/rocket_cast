@@ -5,7 +5,6 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_request
-    Rails.logger.warn request.inspect
     @current_user = AuthorizeApiRequest.authorize(request.headers)
     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
