@@ -7,6 +7,7 @@ export default Controller.extend({
   actions: {
     login() {
       this.authService.login(this.get('email'), this.get('password'));
+      this.transitionToRoute('podcasts');
     }
   },
 

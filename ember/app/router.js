@@ -6,9 +6,13 @@ const Router = EmberRouter.extend({
   rootURL: config.rootURL
 });
 
-Router.map(function() {
+Router.map(function () {
   this.route('login');
-  this.route('items');
+  this.route('podcasts', function () { });
+
+  this.route('entry', function () {
+    this.route('show', { path: '/podcasts/:podcast_id', resetNamespace: true });
+  });
 });
 
 export default Router;

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  post :authenticate, to: 'authentication#authenticate'
+
+  # resources :podcasts, except: [:new, :edit, :update]
   namespace :api do
-    post 'authenticate', to: 'authentication#authenticate'
-    get 'items', to: 'items#index'
+    jsonapi_resources :podcasts, except: [:new, :edit, :update] do
+      jsonapi_relationships
+    end
   end
 end

@@ -20,4 +20,4 @@ if (ENV.apiHost) {
   options.host = ENV.apiHost;
 }
 
-export default DS.RESTAdapter.extend(options);
+export default DS.JSONAPIAdapter.extend(options);

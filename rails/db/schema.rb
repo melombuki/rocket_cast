@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_130453) do
+ActiveRecord::Schema.define(version: 2018_09_08_141842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,6 @@ ActiveRecord::Schema.define(version: 2018_09_07_130453) do
     t.string "title", limit: 255, null: false
     t.string "file", limit: 255, null: false
     t.index ["podcast_id"], name: "FK_d0qdpm5t36mb0n0g1hi4h3w41"
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
   end
 
   create_table "podcasts", force: :cascade do |t|
