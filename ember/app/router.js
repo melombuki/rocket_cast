@@ -8,10 +8,10 @@ const Router = EmberRouter.extend({
 
 Router.map(function () {
   this.route('login');
-  this.route('podcasts', function () { });
-
-  this.route('entry', function () {
-    this.route('show', { path: '/podcasts/:podcast_id', resetNamespace: true });
+  this.route('podcasts', function () {
+    this.route('show', { path: '/:podcast_id' }, function () {
+      this.route('entries');
+    });
   });
 });
 

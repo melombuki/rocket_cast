@@ -14,6 +14,13 @@ let options = {
       'Authorization': this.authService.getAccessToken(),
     });
   },
+
+  findRecord(store, type, id, snapshot) {
+    return this._super(...arguments).then(data => {
+      console.log(data);
+      return data;
+    });
+  }
 };
 
 if (ENV.apiHost) {

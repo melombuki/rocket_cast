@@ -5,5 +5,7 @@ export default DS.Model.extend({
   description: DS.attr(),
   author: DS.attr(),
   image: DS.attr(),
-  entries: DS.hasMany('entries'),
+  entries: DS.hasMany('entries'), link: DS.attr(),
+  subtitle: DS.attr(),
+  url: DS.attr(),
 });

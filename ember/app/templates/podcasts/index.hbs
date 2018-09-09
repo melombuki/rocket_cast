@@ -2,11 +2,19 @@
 <ul>
   {{#each model as |podcast|}}
     <li>
-      {{#mb-podcast podcast=podcast}}
-        {{!-- {{#link-to "podcasts.show" podcast}}
-          {{podcast.title}}
-        {{/link-to}} --}}
-      {{/mb-podcast}}
+      {{mb-podcast podcast=podcast}}
     </li>
   {{/each}}
 </ul>
+{{#link-to 'podcasts.index' (query-params page=model.meta.pagination.first)}}
+  First
+{{/link-to}}
+{{#link-to 'podcasts.index' (query-params page=model.meta.pagination.prev)}}
+  Previous
+{{/link-to}}
+{{#link-to 'podcasts.index' (query-params page=model.meta.pagination.next)}}
+  Next
+{{/link-to}}
+{{#link-to 'podcasts.index' (query-params page=model.meta.pagination.last)}}
+  Last
+{{/link-to}}

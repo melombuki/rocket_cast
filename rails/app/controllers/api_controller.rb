@@ -3,7 +3,6 @@ class ApiController < ApplicationController
   include JSONAPI::ActsAsResourceController
 
   def context
-    Rails.logger.warn current_user.inspect
     {current_user: current_user}
   end
   
