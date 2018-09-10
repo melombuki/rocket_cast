@@ -2,7 +2,7 @@ import Service from '@ember/service';
 
 export default Service.extend({
   login(email, password) {
-    fetch('http://localhost:3000/api/authenticate', {
+    return fetch('http://localhost:3000/api/authenticate', {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -11,12 +11,14 @@ export default Service.extend({
       body: JSON.stringify({ email: email, password: password })
     })
       .then(resp => resp.json())
-      .then(({ auth_token }) => this.setAccessToken(auth_token));
+      .then(({ auth_token }) => {
+        this.setAccessToken(auth_token);
+        return auth_token;
+      })
   },
 
   setAccessToken(token) {
     sessionStorage.setItem('access_token', token);
-    console.log(this.getAccessToken());
   },
 
   getAccessToken() {
@@ -25,6 +27,10 @@ export default Service.extend({
 
   clearAccessToken() {
     sessionStorage.removeItem('access_token');
+  },
+
+  hasAccessToken() {
+    return !!sessionStorage.getItem('access_token');
   }
 
 });
