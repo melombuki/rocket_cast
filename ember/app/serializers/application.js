@@ -3,6 +3,15 @@ import DS from 'ember-data';
 export default DS.JSONAPISerializer.extend({
   normalizeQueryResponse(store, clazz, payload) {
     const result = this._super(...arguments);
+    return this.addPageMeta(result, payload);
+  },
+
+  normalizeFindHasManyResponse(store, clazz, payload) {
+    const result = this._super(...arguments);
+    return this.addPageMeta(result, payload);
+  },
+
+  addPageMeta(result, payload) {
     result.meta = result.meta || {};
 
     if (payload.links) {

@@ -6,8 +6,6 @@ export default Controller.extend({
 
   actions: {
     login() {
-
-
       this.authService.login(this.get('email'), this.get('password'))
         .then(_ => {
           const previousTransition = this.previousTransition;
@@ -18,6 +16,6 @@ export default Controller.extend({
             this.transitionToRoute('podcasts');
           }
         });
-    }
+    },
   },
 });

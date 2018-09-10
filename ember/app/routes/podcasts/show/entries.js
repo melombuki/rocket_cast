@@ -4,14 +4,19 @@ import { inject as service } from '@ember/service'
 export default Route.extend({
   authService: service('auth'),
 
-  model() {
+  model(params) {
     return this.store.findRecord('podcast', this.paramsFor('podcasts.show').podcast_id)
-      .then(podcast => podcast.get('entries'));
+      .then(podcast => {
+        if (params.page) {
+          podcast.set('query-params', { page: params.page })
+        }
+        return podcast.get('entries').reload();
+      });
   },
 
   queryParams: {
     page: {
       refreshModel: true,
-    },
+    }
   },
 });

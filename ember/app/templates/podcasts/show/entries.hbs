@@ -1,5 +1,16 @@
-Entries:
-{{!-- {{stringify model}} --}}
+<h2>Entries:</h2>
 {{#each model as |entry|}}
   {{mb-entry entry=entry}}
 {{/each}}
+{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.first)}}
+  First
+{{/link-to}}
+{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.prev)}}
+  Previous
+{{/link-to}}
+{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.next)}}
+  Next
+{{/link-to}}
+{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.last)}}
+  Last
+{{/link-to}}

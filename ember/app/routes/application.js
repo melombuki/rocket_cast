@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service'
 export default Route.extend({
   authService: service('auth'),
 
-  beforeModel(transition) {
+  beforeModel() {
     if (!this.authService.hasAccessToken()) {
       this.replaceWith('login');
     }
