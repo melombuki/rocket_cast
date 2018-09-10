@@ -6,8 +6,18 @@ export default Controller.extend({
 
   actions: {
     login() {
+
+
       this.authService.login(this.get('email'), this.get('password'))
-        .then(_ => this.transitionToRoute('podcasts'));
+        .then(_ => {
+          const previousTransition = this.previousTransition;
+          if (previousTransition) {
+            this.set('previousTransition', null);
+            previousTransition.retry();
+          } else {
+            this.transitionToRoute('podcasts');
+          }
+        });
     }
   },
 });

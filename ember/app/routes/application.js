@@ -7,8 +7,6 @@ export default Route.extend({
   beforeModel(transition) {
     if (!this.authService.hasAccessToken()) {
       this.replaceWith('login');
-    } else {
-      this.replaceWith('podcasts');
     }
   },
 });
