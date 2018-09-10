@@ -1,3 +1,16 @@
-<div class="ui container">
-  {{outlet}}
+<div class="ui inverted vertical masthead center aligned segment">
+  <div class="ui container">
+    <div class="ui large secondary inverted pointing menu">
+      {{#link-to 'podcasts' class="item"}}Home{{/link-to}}
+    </div>
+  </div>
+  <div class="ui text container">
+    <h1 class="ui inverted header">
+      Rocket Cast
+    </h1>
+    <h2>
+      Listen to all of you podcasts here.
+    </h2>
+  </div>
 </div>
+{{outlet}}

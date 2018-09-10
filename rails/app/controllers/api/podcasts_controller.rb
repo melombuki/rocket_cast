@@ -34,7 +34,15 @@ class Api::PodcastsController < ApiController
     else
       flash[:error] = "That was not a valid url, check and try again later."
     end
-    
+  end
+
+  def update
+    subscriptions = Subscription.where("user_id = ?", current_user.id)
+    subscriptions = subscriptions.collect{|s| s.podcast_id}
+    subscriptions.each { |s| 
+      p = updatePodcast(Podcast.where("id = ?", s).first)
+    }
+    redirect_to api_podcasts_path
   end
 
   private

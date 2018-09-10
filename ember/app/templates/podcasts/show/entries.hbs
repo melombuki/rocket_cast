@@ -1,16 +1,22 @@
-<h2>Entries:</h2>
+<div class="ui center aligned container">
+  <h2>Entries</h2>
+</div>
 {{#each model as |entry|}}
-  {{mb-entry entry=entry}}
+  <div class="ui segment">
+    {{mb-entry entry=entry}}
+  </div>
 {{/each}}
-{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.first)}}
+{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.first) class="ui button"}}
   First
 {{/link-to}}
-{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.prev)}}
+{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.prev) class="ui left labeled icon button"}}
+  <i class="left arrow icon"></i>
   Previous
 {{/link-to}}
-{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.next)}}
+{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.next) class="ui right labeled icon button"}}
+  <i class="right arrow icon"></i>
   Next
 {{/link-to}}
-{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.last)}}
+{{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.last) class="ui button"}}
   Last
 {{/link-to}}
