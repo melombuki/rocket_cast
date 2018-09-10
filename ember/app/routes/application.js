@@ -6,7 +6,6 @@ export default Route.extend({
 
   beforeModel(transition) {
     if (!this.authService.hasAccessToken()) {
-      console.log("Should be replacing with login");
       this.replaceWith('login');
     } else {
       this.replaceWith('podcasts');
