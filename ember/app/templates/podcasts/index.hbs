@@ -2,6 +2,12 @@
 <ul>
   {{#each model as |podcast|}}
     <li>
+      <h3>
+        Titile:
+        {{#link-to "podcasts.show.entries" podcast}}
+          {{podcast.title}}
+        {{/link-to}}
+      </h3>
       {{mb-podcast podcast=podcast}}
     </li>
   {{/each}}
