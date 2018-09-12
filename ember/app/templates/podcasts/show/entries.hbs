@@ -13,18 +13,7 @@
 <div class="ui horizontal divider"></div>
 
 <div class="ui right aligned container">
-  {{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.first) class="ui button"}}
-    First
-  {{/link-to}}
-  {{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.prev) class="ui left labeled icon button"}}
-    <i class="left arrow icon"></i>
-    Previous
-  {{/link-to}}
-  {{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.next) class="ui right labeled icon button"}}
-    <i class="right arrow icon"></i>
-    Next
-  {{/link-to}}
-  {{#link-to 'podcasts.show.entries' (query-params page=model.meta.pagination.last) class="ui button"}}
-    Last
-  {{/link-to}}
+    {{mb-pagination-buttons 
+      route="podcasts.show.entries" 
+      pagination=model.meta.pagination}}
 </div>
