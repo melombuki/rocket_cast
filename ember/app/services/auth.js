@@ -1,6 +1,8 @@
 import Service from '@ember/service';
 
 export default Service.extend({
+  isLoogedIn: false,
+
   login(email, password) {
     return fetch('http://localhost:3000/api/authenticate', {
       method: 'POST',
@@ -13,8 +15,14 @@ export default Service.extend({
       .then(resp => resp.json())
       .then(({ auth_token }) => {
         this.setAccessToken(auth_token);
+        this.set('isLoggedIn', true);
         return auth_token;
-      })
+      });
+  },
+
+  logout() {
+    this.set('isLoggedIn', false);
+    this.clearAccessToken();
   },
 
   setAccessToken(token) {

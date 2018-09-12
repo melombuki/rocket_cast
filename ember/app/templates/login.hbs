@@ -1,16 +1,19 @@
-<h1>Login</h1>
-<form class="ui form" {{action "login" on="submit"}}>
-  <div class="field">
-    <label>Email:</label>
-    {{input name="email" value=email}}
-  </div>
+<div class="ui left aligned container">
+  <div class="ui horizontal divider"></div>
+  <h1 class="ui dividing header">Login</h1>
+  <form class="ui form" {{action "login" email password on="submit"}}>
+    <div class="field">
+      <label>Email:</label>
+      {{input name="email" value=email}}
+    </div>
 
-  <div class="field">
-    <label>Password:</label>
-    {{input name="password" value=password type="password"}}
-  </div>
+    <div class="field">
+      <label>Password:</label>
+      {{input name="password" value=password type="password"}}
+    </div>
 
-  <button type="submit" class="ui button">Log in</button>
-</form>
+    <button type="submit" class="ui button">Submit</button>
+  </form>
 
-{{outlet}}
+  {{outlet}}
+</div>

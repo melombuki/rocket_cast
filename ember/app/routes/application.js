@@ -1,12 +1,4 @@
-import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service'
+import AuthenticatedRoute from './authenticated';
 
-export default Route.extend({
-  authService: service('auth'),
-
-  beforeModel() {
-    if (!this.authService.hasAccessToken()) {
-      this.replaceWith('login');
-    }
-  },
+export default AuthenticatedRoute.extend({
 });

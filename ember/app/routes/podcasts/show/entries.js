@@ -1,9 +1,6 @@
-import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service'
+import AuthenticatedRoute from '../../authenticated';
 
-export default Route.extend({
-  authService: service('auth'),
-
+export default AuthenticatedRoute.extend({
   model(params) {
     return this.store.findRecord('podcast', this.paramsFor('podcasts.show').podcast_id)
       .then(podcast => {
