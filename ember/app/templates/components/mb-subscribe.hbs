@@ -1,0 +1,14 @@
+<div class="ui container">
+  <h3 class="ui dividing header">
+    Add Podcast Subscription
+  </h3>
+  <form class="ui form" {{action "subscribe" url on="submit"}}>
+    <div class="field">
+      <label>Podcast URL:</label>
+      <div class="ui action input">
+        {{input name="url" value=url required="true" placeholder="example: http://feed.elixirfountain.com"}}
+        <button type="submit" class="ui blue submit button">Subscribe</button>
+      </div>
+    </div>
+  </form>
+</div>
