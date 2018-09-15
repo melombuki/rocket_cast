@@ -45,6 +45,17 @@ class Api::PodcastsController < ApiController
     redirect_to api_podcasts_path
   end
 
+  def destroy
+    subscription = Subscription.where("user_id = ? AND podcast_id = ?", current_user.id, params[:id])
+    subscription.delete_all
+    subscriptions = Subscription.where("podcast_id = ?", params[:id])
+    
+    if subscriptions.blank?
+      Entry.where("podcast_id = ?", params[:id]).delete_all
+      Podcast.where("id = ?", params[:id]).delete_all
+    end
+  end
+
   private
 
   def updatePodcastFromUrl(url)
