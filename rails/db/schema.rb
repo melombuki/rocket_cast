@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_141842) do
+ActiveRecord::Schema.define(version: 2018_09_17_032653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_09_08_141842) do
     t.text "summary"
     t.string "title", limit: 255, null: false
     t.string "file", limit: 255, null: false
+    t.string "entry_id"
+    t.index ["entry_id"], name: "index_entries_on_entry_id", unique: true
     t.index ["podcast_id"], name: "FK_d0qdpm5t36mb0n0g1hi4h3w41"
   end
 

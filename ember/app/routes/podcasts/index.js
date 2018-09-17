@@ -1,6 +1,9 @@
 import AuthenticatedRoute from '../authenticated';
+import { inject as service } from '@ember/service'
 
 export default AuthenticatedRoute.extend({
+  ajax: service(),
+
   model(params) {
     return this.store.query('podcast', {
       page: {
@@ -11,21 +14,25 @@ export default AuthenticatedRoute.extend({
 
   actions: {
     subscribe(url) {
-      console.log(url);
-      return fetch('http://localhost:3000/api/podcasts', {
+      return this.get('ajax').request('/podcasts', {
         method: 'POST',
-        mode: 'cors',
         headers: {
           "Content-Type": "application/json; charset=utf-8",
-          "Authorization": this.authService.getAccessToken(),
         },
-        body: JSON.stringify({ url: url })
+        data: {
+          url: url,
+        }
       })
         .then(() => {
           this.set('url', null);
           this.refresh();
         });
-    }
+    },
+
+    unsubscribe(podcast) {
+      console.log(podcast);
+      podcast.destroyRecord();
+    },
   },
 
   queryParams: {

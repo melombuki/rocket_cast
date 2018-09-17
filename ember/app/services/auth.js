@@ -1,6 +1,8 @@
 import Service from '@ember/service';
+import { inject as service } from '@ember/service';
 
 export default Service.extend({
+  ajax: service(),
 
   init() {
     this._super(...arguments);
@@ -9,15 +11,16 @@ export default Service.extend({
   },
 
   login(email, password) {
-    return fetch('http://localhost:3000/api/authenticate', {
-      method: 'POST',
-      mode: 'cors',
+    return this.get('ajax').request('/authenticate', {
+      method: "POST",
       headers: {
-        "Content-Type": "application/json; charset=utf-8"
+        "Content-Type": "application/json; charset=utf-8",
       },
-      body: JSON.stringify({ email: email, password: password })
+      data: {
+        email: email,
+        password: password,
+      },
     })
-      .then(resp => resp.json())
       .then(({ auth_token }) => {
         this.setAccessToken(auth_token);
         this.set('isLoggedIn', true);

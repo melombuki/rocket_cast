@@ -5,4 +5,5 @@ export default DS.Model.extend({
   file: DS.attr(),
   summary: DS.attr(),
   podcast: DS.belongsTo('podcast'),
+  published_date: DS.attr(),
 });

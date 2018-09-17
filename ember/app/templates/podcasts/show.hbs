@@ -1,8 +1,14 @@
 <div class="ui horizontal divider"></div>
 
+<button class="ui mini right floated icon button" {{action "refresh" model}}>
+  <i class="redo icon"></i>
+  Refresh
+</button>
+
 <div class="ui center aligned stackable container">
   <h1>Titile: {{model.title}}</h1>
 </div>
+
 
 <div class="ui center aligned container">
   {{mb-podcast podcast=model}}
